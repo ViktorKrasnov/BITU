@@ -1,0 +1,121 @@
+<html>
+<head>
+<title>БАЭС - Регистрация</title>
+  <link href="KR.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<header>
+  <div class="headre">
+    <div class="hcont"{>
+      <div class="menu">
+        <a href="index.html" class="h3">Главная</a>&nbsp;|
+        <a href="news.html" class="h3">Производственные показатели</a>&nbsp;|
+        <a href="registration.html" class="h3">Регистрация</a>
+      </div>
+      <div class="timer">
+        <script type="text/javascript">
+          var d=new Date();
+          var day=d.getDate();
+          var month=d.getMonth() + 1;
+          var year=d.getFullYear();
+          document.write("Дата: " + day + "." + month + "." + year + " Время: " + d.toLocaleTimeString());
+          </script>
+      </div>
+    </div>
+  </div>
+  
+  </div>
+</header>
+<main class="content">
+  <div class="divc">
+    <h2>РЕГИСТРАЦИЯ</h2>      
+    <img src="img\bal12.jpg" alt="" class="mimg" >
+  </div>  
+<div class="divp">
+  <script language="JavaScript">
+    function start(form) {  
+    if (form.login.value == "" , form.pass.value == "" ,form.pass2.value == "" ,form.name.value == "" ,form.email.value == "")   
+      alert("Пожалуйста, заполните все поля!")
+    else {
+      alert("Спасибо за регистрацию, "+form.name.value+"!");
+      const user = {
+        login: form.login.value,
+        password: form.pass.value,
+        name: form.name.value,
+        email: form.email.value,
+        post: form.region.value
+    };
+    
+    var messege = "login:"+form.login.value+";password:"+form.pass.value;
+    const request = new XMLHttpRequest();
+    request.open("POST", "post.php", true);
+    request.setRequestHeader("registration","localhost:4444");
+    request.send(messege);
+    document.getElementById('out_arr').innerHTML = 
+    "login: " + user.login + "<br>"+
+    "password: " + user.password + "<br>"+
+    "name: " + user.name + "<br>"+
+    "email: " + user.email + "<br>"+
+    "post: " + user.post + "<br>"
+    }
+  }  
+</script>
+<p>
+  <b>Для регистрации заполните все поля.</b>
+</p>
+<p>
+  <form name="registration" method="get" action="http://mysite.faraway.com">
+    <p>
+      Логин:<br>
+      <input name="login" type="text" size="20" maxlength="40">
+    </p>
+    <p>
+      Пароль:<br>
+      <input name="pass" type="password" size="20" maxlength="40">
+    </p>
+    <p>
+      Повторите пароль:<br>
+      <input name="pass2", type="password" size="20" maxlength="40"> 
+    </p>
+    <p>
+      Имя, видимое другим (никнейм):<br>
+      <input name="name" type="text" size="20" maxlength="40">
+    </p>
+    <p>
+      Почта:<br>
+      <input name="email" type="text" size="20" maxlength="40">
+    </p>
+    <p>
+      Принадлежность к БАЭС:<br>
+      <select name="region" size="1">
+      <option value="0" selected>Сотрудник
+      <option value="1">Хочу устроиться
+      <option value="2">Хочу пройти практику(студент)
+      <option value="3">Не имею принадлежности
+      </select>
+    </p>
+    <p>
+      Я согласен с правилами регистрации:<input type="checkbox" name="confirm"><br>
+    </p>
+    <p>
+      <input type="button" value="Зарегистрироваться" onclick="start(this.form)">
+      <input type="button" value="Очистить все поля" onclick="this.form.reset()">
+    </p>    
+   </form>
+</p>
+<p id="out_arr"></p>
+</div>
+</main>
+<footer>
+  <div clss="footre">
+    <div class="fcont">
+      <div class="divbot">
+        <p>(C) BMS (Buggs making studio). Все права защищены.</p>
+        <p>Разработчик: Краснов В.А., ИФСТ-4з</p>
+      </div>
+  </div>
+</footer>
+  
+
+</body>
+</html> 
